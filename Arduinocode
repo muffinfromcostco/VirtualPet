@@ -1,0 +1,90 @@
+import processing.serial.*;
+import cc.arduino.*;
+Arduino arduino;
+
+public void setup() {
+  size(1000, 1000);
+  arduino = new Arduino(this, Arduino.list()[0], 57600); //change the [0] to a [1] or [2] etc. if your program doesn't work
+}
+
+public void draw() {
+  background(192);
+  int y = arduino.analogRead(5);
+  int x = (y*9);
+  System.out.println(y);
+  fill(#DB2C2C);
+  stroke(#6A1414);
+  triangle(250,1000,380,1000,313,1000 - x); //redfire
+  triangle(350,1000,480,1000,413,1000 - x);
+  triangle(450,1000,580,1000,513,1000 - x);
+  triangle(550,1000,680,1000,613,1000 - x);
+  triangle(650,1000,780,1000,713,1000 - x);
+ 
+  fill(#FFBF1A);
+  noStroke();
+  triangle(250,1000,380,1000,313,1300 - x); //orangefire
+  triangle(350,1000,480,1000,413,1300 - x);
+  triangle(450,1000,580,1000,513,1300 - x);
+  triangle(550,1000,680,1000,613,1300 - x);
+  triangle(650,1000,780,1000,713,1300 - x);
+ 
+  fill(#FFE91A);
+  triangle(250,1000,380,1000,313,1500 - x); //yellowfire
+  triangle(350,1000,480,1000,413,1500 - x);
+  triangle(450,1000,580,1000,513,1500 - x);
+  triangle(550,1000,680,1000,613,1500 - x);
+  triangle(650,1000,780,1000,713,1500 - x);
+ 
+fill(206,171,119);
+stroke(#836528);
+ellipse(470,700,150,75); //leftleg
+ellipse(450,620,110,55); //leftarm
+ellipse(520,613,180,250); //body
+ellipse(560,460,30,45); //leftear
+ellipse(475,460,30,45); //rightear
+
+fill(#816737);
+stroke(#836528);
+ellipse(475,460,20,35); //rightinnerear
+ellipse(560,460,20,35); //leftinnerear
+
+fill(206,171,119);
+stroke(#836528);
+ellipse(520,700,150,75); //rightleg
+ellipse(500,540,200,165); //head
+ellipse(500,620,110,55); //leftarm
+
+fill(#816737);
+stroke(#55431E);
+ellipse(448,540,90,130); //nose
+
+fill(#050300);
+stroke(0);
+ellipse(520,500,10,10);//eye
+ellipse(455,515,4,20);//leftnostril
+ellipse(430,515,4,20);//rightnostril
+
+noFill();
+stroke(0,0,0);
+strokeWeight(2);
+arc(450,560,20,20,0,PI); //mouth
+arc(430,560,20,20,0,PI); //mouth
+
+fill(#F2A9DA);
+stroke(#55431E);
+arc(440,570,15,y-70,0,PI); //touge
+
+
+if (y < 10) {
+noFill();
+noStroke();
+}
+  else {
+fill(0,0,0);
+stroke(0,0,0);
+}
+quad(550,370+y,500,390+y,500,370+y,550,350+y); //eyebrow
+noStroke();
+}
+
+
