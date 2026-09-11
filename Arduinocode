@@ -1,14 +1,22 @@
 import processing.serial.*;
 import cc.arduino.*;
 Arduino arduino;
-
+int rButton = 0;
 public void setup() {
   size(1000, 1000);
   arduino = new Arduino(this, Arduino.list()[0], 57600); //change the [0] to a [1] or [2] etc. if your program doesn't work
 }
 
 public void draw() {
-  background(192);
+  rButton = arduino.analogRead(1);
+    r = int(random(256));
+    g = int(random(256));
+    b = int(random(256));
+    if(rButton > 500)
+    background(r,g,b);
+    else
+    background(192);
+    
   int y = arduino.analogRead(5);
   int x = (y*9);
   System.out.println(y);
