@@ -9,11 +9,13 @@ public void setup() {
 
 public void draw() {
   rButton = arduino.analogRead(1);
-    r = int(random(256));
-    g = int(random(256));
-    b = int(random(256));
+int min = 0;
+int max = 256;
+int randomNum = min + (int)(Math.random() * ((max - min) + 1));
+int randomNum1= min + (int)(Math.random() * ((max - min) + 1));
+int randomNum2= min + (int)(Math.random() * ((max - min) + 1));
     if(rButton > 500)
-    background(r,g,b);
+    background(randomNum,randomNum1,randomNum2);
     else
     background(192);
     
@@ -94,5 +96,3 @@ stroke(0,0,0);
 quad(550,370+y,500,390+y,500,370+y,550,350+y); //eyebrow
 noStroke();
 }
-
-
